@@ -10,7 +10,7 @@ class LottoNumbersTest : DescribeSpec({
         context("유효하다면") {
             val numbers = listOf(1, 2, 3, 4, 5, 6)
             it("생성된다") {
-                LottoNumbers(numbers).numbers.map { it.value } shouldBe numbers.toList()
+                LottoNumbers(numbers)
             }
         }
 

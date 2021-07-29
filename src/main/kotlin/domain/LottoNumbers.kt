@@ -18,3 +18,12 @@ class LottoNumbers(numbers: Collection<Int>) {
 }
 
 private fun Collection<Int>.mapToLottoNumberSet() = mapTo(HashSet()) { LottoNumber(it) }
+
+class LottoTicket(numbers: Collection<Int>) {
+
+    val numbers = LottoNumbers(numbers)
+
+    fun contains(number: LottoNumber) = numbers.contains(number)
+
+    fun countSameNumbers(other: LottoNumbers): Int = numbers.countSameNumbers(other)
+}
