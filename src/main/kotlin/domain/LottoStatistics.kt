@@ -2,18 +2,18 @@ package domain
 
 class LottoStatistics(tickets: List<LottoTicket>, winnerNumbers: WinnerNumbers) {
 
-    val rankingToCount: Map<LottoRanking, Int> = getRankingToCount(tickets, winnerNumbers)
+    val countByRanking: Map<LottoRanking, Int> = countRankingFrom(tickets, winnerNumbers)
     private val ticketCount = tickets.size
 
     val revenue: Double
         get() {
             val spent: LottoMoney = LottoTicketCount(ticketCount).price
-            val reward: Long = getTotalReward(rankingToCount)
+            val reward: Long = getTotalReward(countByRanking)
             return reward.toDouble() / spent
         }
 }
 
-private fun getRankingToCount(tickets: List<LottoTicket>, winnerNumbers: WinnerNumbers): Map<LottoRanking, Int> {
+private fun countRankingFrom(tickets: List<LottoTicket>, winnerNumbers: WinnerNumbers): Map<LottoRanking, Int> {
     return tickets.mapNotNull { it.findRankingBy(winnerNumbers) }
             .groupingBy { it }
             .eachCount()

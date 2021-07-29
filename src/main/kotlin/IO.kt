@@ -48,7 +48,7 @@ object IO {
 
     fun printWinningStatistics(lottoRankingCount: LottoStatistics) {
         println("당첨 통계")
-        for ((key, value) in lottoRankingCount.rankingToCount.entries) {
+        for ((key, value) in lottoRankingCount.countByRanking.entries) {
             println("${key.name}등 : ${value}번")
         }
         println("총 수익률은 ${lottoRankingCount.revenue}입니다.")
