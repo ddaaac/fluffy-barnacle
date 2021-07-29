@@ -11,6 +11,6 @@ fun main() {
     val ctx = AppContext()
     val gameController = ctx.gameController
 
-    val ticketCount = gameController.buyTickets()
-
+    val tickets = gameController.buyTickets()
+    val winnerNumbers = gameController.getWinnerNumbers()
 }

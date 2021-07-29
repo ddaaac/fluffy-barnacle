@@ -1,10 +1,7 @@
 package ui
 
 import IO
-import domain.LottoMoney
-import domain.LottoTicket
-import domain.LottoTicketCounts
-import domain.RandomNumberGenerator
+import domain.*
 
 class LottoGameController(private val numberGenerator: RandomNumberGenerator) {
 
@@ -22,6 +19,10 @@ class LottoGameController(private val numberGenerator: RandomNumberGenerator) {
             ticketCounts.useAutoTicket()
         }
         return tickets
+    }
+
+    fun getWinnerNumbers(): WinnerNumbers {
+        return WinnerNumbers(IO.inputWinnerNumbers(), IO.inputBonusNumber())
     }
 
     private fun buyAutoTicket(): LottoTicket {
