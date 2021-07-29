@@ -1,3 +1,4 @@
+import domain.LottoStatistics
 import domain.LottoTicket
 import domain.LottoTicketCounts
 
@@ -45,21 +46,11 @@ object IO {
         println(lottoTicket.numbers.numbers.joinToString(",") { it.value.toString() })
     }
 
-//    fun printWinningStatistics(lottoRankingCount: LottoStatisticsDto) {
-//        val sb = StringBuilder()
-//        sb.append("당첨 통계")
-//            .append(NEW_LINE)
-//            .append("---------")
-//            .append(NEW_LINE)
-//        for ((key, value) in lottoRankingCount.getRankingCount().entrySet()) {
-//            sb.append(key.getContext())
-//                .append(value)
-//                .append(NEW_LINE)
-//        }
-//        println(sb.toString())
-//    }
-//
-//    fun printRevenueRate(revenueRate: LottoRevenueRate) {
-//        println("총 수익률은 ${revenueRate.getRate()}입니다.")
-//    }
+    fun printWinningStatistics(lottoRankingCount: LottoStatistics) {
+        println("당첨 통계")
+        for ((key, value) in lottoRankingCount.rankingToCount.entries) {
+            println("${key.name}등 : ${value}번")
+        }
+        println("총 수익률은 ${lottoRankingCount.revenue}입니다.")
+    }
 }

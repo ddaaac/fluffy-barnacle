@@ -13,4 +13,5 @@ fun main() {
 
     val tickets = gameController.buyTickets()
     val winnerNumbers = gameController.getWinnerNumbers()
+    gameController.getStatistics(tickets, winnerNumbers)
 }

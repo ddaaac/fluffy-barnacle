@@ -25,6 +25,10 @@ class LottoGameController(private val numberGenerator: RandomNumberGenerator) {
         return WinnerNumbers(IO.inputWinnerNumbers(), IO.inputBonusNumber())
     }
 
+    fun getStatistics(tickets: List<LottoTicket>, winnerNumbers: WinnerNumbers) {
+        IO.printWinningStatistics(LottoStatistics(tickets, winnerNumbers))
+    }
+
     private fun buyAutoTicket(): LottoTicket {
         return LottoTicket(numberGenerator.generateSixInts())
                 .also { IO.printTicketNumbers(it) }

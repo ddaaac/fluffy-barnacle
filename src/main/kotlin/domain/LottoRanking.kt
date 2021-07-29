@@ -3,9 +3,9 @@ package domain
 private val DONT_CARE = null
 
 enum class LottoRanking(
-    private val count: Int,
-    private val bonus: Boolean?,
-    val price: Long,
+        private val count: Int,
+        private val bonus: Boolean?,
+        val reward: Long,
 ) {
     RANK_1(6, DONT_CARE, 2_000_000_000L),
     RANK_2(5, true, 100_000_000L),
