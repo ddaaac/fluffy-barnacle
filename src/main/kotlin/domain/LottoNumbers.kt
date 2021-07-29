@@ -1,9 +1,11 @@
 package domain
 
-abstract class LottoNumbers(val numbers: Set<LottoNumber>) {
+class LottoNumbers(numbers: Collection<Int>) {
+
+    val numbers: Set<LottoNumber> = numbers.mapToLottoNumberSet()
 
     init {
-        require(numbers.size == 6) { "중복된 번호가 존재하거나, 번호가 6개가 아닙니다" }
+        require(this.numbers.size == 6) { "중복된 번호가 존재하거나, 번호가 6개가 아닙니다" }
     }
 
     fun contains(number: LottoNumber): Boolean {
@@ -15,6 +17,4 @@ abstract class LottoNumbers(val numbers: Set<LottoNumber>) {
     }
 }
 
-class LottoTicket(vararg numbers: Int) : LottoNumbers(numbers.mapToLottoNumberSet())
-
-private fun IntArray.mapToLottoNumberSet() = mapTo(HashSet()) { LottoNumber(it) }
+private fun Collection<Int>.mapToLottoNumberSet() = mapTo(HashSet()) { LottoNumber(it) }
