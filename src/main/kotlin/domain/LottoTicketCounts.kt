@@ -21,7 +21,7 @@ class LottoTicketCounts private constructor(
     companion object {
         fun from(money: LottoMoney, manualCount: Int): LottoTicketCounts {
             val manualTicketCount = LottoTicketCount(manualCount)
-            val autoTicketCount = LottoTicketCount.from(money - manualTicketCount.price)
+            val autoTicketCount = LottoTicketCount(money - manualTicketCount.price)
             return LottoTicketCounts(manualTicketCount, autoTicketCount)
         }
     }

@@ -3,12 +3,13 @@ package domain
 class LottoStatistics(tickets: List<LottoTicket>, winnerNumbers: WinnerNumbers) {
 
     val rankingToCount: Map<LottoRanking, Int> = getRankingToCount(tickets, winnerNumbers)
+    private val ticketCount = tickets.size
 
     val revenue: Double
         get() {
-            val ticketsPrice: LottoMoney = LottoTicketCount(rankingToCount.entries.size).price
+            val spent: LottoMoney = LottoTicketCount(ticketCount).price
             val reward: Long = getTotalReward(rankingToCount)
-            return reward.toDouble() / ticketsPrice.value
+            return reward.toDouble() / spent
         }
 }
 

@@ -6,11 +6,7 @@ class LottoTicketCount(val value: Int) {
         require(value >= 0) { "티켓 갯수는 0 이상의 정수입니다" }
     }
 
-    companion object {
-        fun from(money: LottoMoney) = LottoTicketCount(money.ticketCount)
-    }
-
-    val price: LottoMoney = MONEY_PER_TICKET * value
+    val price: LottoMoney = LottoMoney(MONEY_PER_TICKET * value)
 
     private var remain: Int = value
 
@@ -24,3 +20,5 @@ class LottoTicketCount(val value: Int) {
         remain--
     }
 }
+
+fun LottoTicketCount(money: LottoMoney): LottoTicketCount = LottoTicketCount(money / MONEY_PER_TICKET)
